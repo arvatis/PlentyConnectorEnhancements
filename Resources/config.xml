@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <elements>
+        <element type="select" scope="shop" required="true">
+            <name>ProductIdentifierField</name>
+            <label lang="de">Artikelnummer Feld</label>
+            <label lang="en">Product number field</label>
+            <value>number</value>
+            <store>
+                <option>
+                    <value>number</value>
+                    <label lang="de">Artikelnummer (Default)</label>
+                    <label lang="en">Product number (default)</label>
+                </option>
+                <option>
+                    <value>id</value>
+                    <label lang="de">Interne Artikel id</label>
+                    <label lang="en">Internal article id</label>
+                </option>
+                <option>
+                    <value>ean</value>
+                    <label lang="de">EAN (GTIN13)</label>
+                    <label lang="en">EAN (GTIN13)</label>
+                </option>
+            </store>
+        </element>
+    </elements>
+</config>

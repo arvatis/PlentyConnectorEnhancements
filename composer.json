@@ -1,0 +1,15 @@
+{
+    "name": "arvatis/plentyconnectorenhancements",
+    "license": "MIT",
+    "type": "shopware-plugin",
+    "description": "plentymarkets Shopware connector enhancements by arvatis",
+    "keywords": [
+        "plenty",
+        "shopware",
+        "connector"
+    ],
+    "homepage": "https://github.com/arvatis/plentyconnectorenhancements",
+    "extra": {
+        "installer-name": "ArvPlentyConnectorEnhancements"
+    }
+}
