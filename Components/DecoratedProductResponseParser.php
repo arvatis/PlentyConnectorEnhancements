@@ -3,8 +3,8 @@
 namespace ArvPlentyConnectorEnhancements\Components;
 
 use PlentyConnector\Connector\TransferObject\Product\Barcode\Barcode;
-use PlentyConnector\Connector\TransferObject\TransferObjectInterface;
 use PlentymarketsAdapter\ResponseParser\Product\ProductResponseParserInterface;
+use Shopware\Components\Plugin\ConfigReader;
 
 /**
  * Class DecoratedProductResponseParser
@@ -24,35 +24,36 @@ class DecoratedProductResponseParser implements ProductResponseParserInterface
     /**
      * DecoratedProductResponseParser constructor.
      *
+     * @param ConfigReader $configReader
      * @param ProductResponseParserInterface $parentRroductResponseParser
      */
-    public function __construct(ProductResponseParserInterface $parentRroductResponseParser)
-    {
+    public function __construct(
+        ConfigReader $configReader,
+        ProductResponseParserInterface $parentRroductResponseParser
+    ) {
+        $this->config = $configReader->getByPluginName('ArvPlentyConnectorEnhancements');
         $this->parentRroductResponseParser = $parentRroductResponseParser;
-        $this->config = Shopware()->Container()->get('shopware.plugin.config_reader')->getByPluginName('ArvPlentyConnectorEnhancements');
     }
 
     /**
-     * @param array $product
-     *
-     * @return TransferObjectInterface[]
+     * {@inheritdoc}
      */
     public function parse(array $product)
     {
-        if (empty($this->config['ProductIdentifierField'])) {
+        if (empty($this->config['product_identifier_field'])) {
             return $this->parentRroductResponseParser->parse($product);
         }
 
         foreach ($product['variations'] as $key => $variation) {
-            if ($this->config['ProductIdentifierField'] === 'number') {
+            if ($this->config['product_identifier_field'] === 'number') {
                 continue;
             }
 
-            if ($this->config['ProductIdentifierField'] === 'id') {
+            if ($this->config['product_identifier_field'] === 'id') {
                 $product['variations'][$key]['number'] = $variation['id'];
             }
 
-            if ($this->config['ProductIdentifierField'] === 'ean') {
+            if ($this->config['product_identifier_field'] === 'ean') {
                 $barcodes = array_filter($variation['variationBarcodes'], function (array $barcode) {
                     return $barcode['barcodeId'] === Barcode::TYPE_GTIN13;
                 });

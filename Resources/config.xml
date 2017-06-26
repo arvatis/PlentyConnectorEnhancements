@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
     <elements>
         <element type="select" scope="shop" required="true">
-            <name>ProductIdentifierField</name>
+            <name>product_identifier_field</name>
             <label lang="de">Artikelnummer Feld</label>
             <label lang="en">Product number field</label>
             <value>number</value>
