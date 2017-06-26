@@ -24,7 +24,7 @@ class DecoratedProductResponseParser implements ProductResponseParserInterface
     /**
      * DecoratedProductResponseParser constructor.
      *
-     * @param ConfigReader $configReader
+     * @param ConfigReader                   $configReader
      * @param ProductResponseParserInterface $parentRroductResponseParser
      */
     public function __construct(

@@ -13,6 +13,11 @@
         <service id="arv.plenty_connector_enhancements.components.decorated_order_item_request_generator" class="ArvPlentyConnectorEnhancements\Components\DecoratedOrderItemRequestGenerator" decorates="plentmarkets_adapter.request_generator.order_item" public="false">
             <argument type="service" id="shopware.plugin.config_reader" />
             <argument type="service" id="arv.plenty_connector_enhancements.components.decorated_order_item_request_generator.inner" />
+            <argument type="service" id="arv.plenty_connector_enhancements.components.variation_data_provider" />
+        </service>
+
+        <service id="arv.plenty_connector_enhancements.components.variation_data_provider" class="ArvPlentyConnectorEnhancements\DataProvider\VariationDataProvider">
+            <argument type="service" id="plentmarkets_adapter.client" />
         </service>
     </services>
 </container>
