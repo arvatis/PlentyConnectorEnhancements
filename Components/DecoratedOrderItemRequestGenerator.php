@@ -52,6 +52,10 @@ class DecoratedOrderItemRequestGenerator implements OrderItemRequestGeneratorInt
     {
         $request = $this->parentRequestGenerator->generate($orderItem, $order);
 
+        if (empty($this->config['product_identifier_field'])) {
+            return $request;
+        }
+
         if ($this->config['product_identifier_field'] === 'number') {
             return $request;
         }
