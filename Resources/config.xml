@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
     <elements>
-        <element type="select" scope="shop" required="true">
+        <element type="select" required="true">
             <name>product_identifier_field</name>
             <label lang="de">Artikelnummer Feld</label>
             <label lang="en">Product number field</label>
@@ -24,6 +24,15 @@
                     <label lang="en">EAN (GTIN13)</label>
                 </option>
             </store>
+        </element>
+
+        <element type="boolean">
+            <name>syncProductData</name>
+            <label lang="de">Synchronisiere Artikeldaten</label>
+            <label lang="en">Sync product data</label>
+            <value>true</value>
+            <description lang="de">If activated, sync product related data (categories, manufacturer, products, images)</description>
+            <description lang="en">Wenn aktiviert werden Artikel relevante Daten (Kategorien, Hersteller, Artikel und Bilder) übertragen</description>
         </element>
     </elements>
 </config>

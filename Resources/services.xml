@@ -5,6 +5,8 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <!-- product number field -->
+
         <service id="arv.plenty_connector_enhancements.components.decorated_product_response_parser" class="ArvPlentyConnectorEnhancements\Components\DecoratedProductResponseParser" decorates="plentmarkets_adapter.response_parser.product" public="false">
             <argument type="service" id="shopware.plugin.config_reader" />
             <argument type="service" id="arv.plenty_connector_enhancements.components.decorated_product_response_parser.inner" />
@@ -13,11 +15,28 @@
         <service id="arv.plenty_connector_enhancements.components.decorated_order_item_request_generator" class="ArvPlentyConnectorEnhancements\Components\DecoratedOrderItemRequestGenerator" decorates="plentmarkets_adapter.request_generator.order_item" public="false">
             <argument type="service" id="shopware.plugin.config_reader" />
             <argument type="service" id="arv.plenty_connector_enhancements.components.decorated_order_item_request_generator.inner" />
-            <argument type="service" id="arv.plenty_connector_enhancements.components.variation_data_provider" />
+            <argument type="service" id="arv_plenty_connector_enhancements.components.variation_data_provider" />
         </service>
 
-        <service id="arv.plenty_connector_enhancements.components.variation_data_provider" class="ArvPlentyConnectorEnhancements\DataProvider\VariationDataProvider">
+        <service id="arv_plenty_connector_enhancements.components.variation_data_provider" class="ArvPlentyConnectorEnhancements\DataProvider\VariationDataProvider">
             <argument type="service" id="plentmarkets_adapter.client" />
+        </service>
+
+        <!-- configureable product data sync -->
+
+        <service id="arv_plenty_connector_enhancements.components.configurable_definition.manufacturer" class="ArvPlentyConnectorEnhancements\Components\ConfigurableDefinition" decorates="plenty_connector.connector_definition.manufacturer" public="false">
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="arv_plenty_connector_enhancements.components.configurable_definition.manufacturer.inner" />
+        </service>
+
+        <service id="arv_plenty_connector_enhancements.components.configurable_definition.category" class="ArvPlentyConnectorEnhancements\Components\ConfigurableDefinition" decorates="plenty_connector.connector_definition.category" public="false">
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="arv_plenty_connector_enhancements.components.configurable_definition.category.inner" />
+        </service>
+
+        <service id="arv_plenty_connector_enhancements.components.configurable_definition.product" class="ArvPlentyConnectorEnhancements\Components\ConfigurableDefinition" decorates="plenty_connector.connector_definition.product" public="false">
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="arv_plenty_connector_enhancements.components.configurable_definition.product.inner" />
         </service>
     </services>
 </container>
