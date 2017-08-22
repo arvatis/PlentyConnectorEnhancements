@@ -29,6 +29,11 @@
             <argument type="service" id="arv_plenty_connector_enhancements.components.configurable_definition.manufacturer.inner" />
         </service>
 
+        <service id="arv_plenty_connector_enhancements.components.configurable_definition.media_category" class="ArvPlentyConnectorEnhancements\Components\ConfigurableDefinition" decorates="plenty_connector.connector_definition.media_category" public="false">
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="arv_plenty_connector_enhancements.components.configurable_definition.media_category.inner" />
+        </service>
+
         <service id="arv_plenty_connector_enhancements.components.configurable_definition.category" class="ArvPlentyConnectorEnhancements\Components\ConfigurableDefinition" decorates="plenty_connector.connector_definition.category" public="false">
             <argument type="service" id="shopware.plugin.config_reader" />
             <argument type="service" id="arv_plenty_connector_enhancements.components.configurable_definition.category.inner" />
