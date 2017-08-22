@@ -35,6 +35,10 @@ class ArvPlentyConnectorEnhancements extends Plugin
                 if (file_exists($folder . 'Frontend/' . $pluginName)) {
                     return true;
                 }
+
+                if (file_exists($folder . $pluginName)) {
+                    return true;
+                }
             }
         }
 
